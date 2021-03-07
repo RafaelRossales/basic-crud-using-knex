@@ -3,10 +3,15 @@ const express = require('express')
 const routes = express.Router();
 
 const UserController = require('./controllers/UserController.js')
+const ProjectsController = require('./controllers/ProjectController.js')
 
-routes.get('/users',UserController.index);
-routes.post('/users',UserController.create);
-routes.put('/users/:id',UserController.update);
-routes.delete('/users/:id',UserController.delete);
+routes
+//Users
+.get('/users',UserController.index)
+.post('/users',UserController.create)
+.put('/users/:id',UserController.update)
+.delete('/users/:id',UserController.delete)
 
+.get('/projects',ProjectsController.index)
+.post('/projects',ProjectsController.create)
 module.exports = routes
