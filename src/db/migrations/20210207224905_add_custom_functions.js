@@ -1,11 +1,12 @@
 const CUSTOM_FUNCTIONS = `
-CREATE FUNCTION on_update_timestamp()
-RETURNS trigger AS $$
+DROP PROCEDURE IF EXISTS on_update_timestamp;
+DELIMITER $$
+CREATE PROCEDURE on_update_timestamp()
 BEGIN
     NEW.updated_at = now();
     RETURN NEW;
-END;
-$$ language 'mysql';
+END$$
+DELIMITER;
 `
 
 const DROP_CUSTOM_FUNCTIONS = `
